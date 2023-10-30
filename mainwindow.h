@@ -7,6 +7,9 @@
 #include <QMouseEvent>
 #include <QtWidgets>
 
+
+struct Material;
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class SignalAttenuationWidget; }
 QT_END_NAMESPACE
@@ -33,7 +36,40 @@ private:
 
     bool isPointOnLine(const QPointF& startPoint, const QPointF& endPoint, const QPointF& point);
     double computeSignalAttenuation(double distance, double lineLength, const QPointF& startPoint, const QPointF& endPoint, const QPointF& point);
-    double drawBresenhamLine(QPainter* painter, const QPointF& start, const QPointF& end);
+    double drawBresenhamLine(QPainter* painter, const QPointF& start, const QPointF& end, Material *mate);
 };
+
+
+extern double (*arrayOfMaterial[4])(double);
+enum typeOfMaterial {
+    multiPanelGlass,
+    glass,
+    concrete,
+    wood
+};
+
+struct Material {
+    typeOfMaterial type;
+    int x_Pozition, y_Pozition, x1_Size, y1_Size;
+    double Pl_Function(double f) {
+        return arrayOfMaterial[type](f);
+    }
+    QColor col;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #endif // MAINWINDOW_H
