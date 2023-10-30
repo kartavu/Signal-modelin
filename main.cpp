@@ -1,14 +1,6 @@
 
 #include <QApplication>
 #include "mainwindow.h"
-
-
-
-
-
-
-
-#include "mainwindow.h"
 #include <QLabel>
 #include <QVBoxLayout>
 #include <cmath>
