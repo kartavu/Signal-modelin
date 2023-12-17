@@ -6,6 +6,7 @@
 #include <QLineF>
 #include <QtMath>
 #include <QtWidgets>
+#include "map_3d.h"
 
 #include "Material.h"
 #include "BrasenhamLine.h"
@@ -15,6 +16,7 @@ SignalAttenuationWidget::SignalAttenuationWidget(QWidget *parent)
     : QMainWindow(parent)
 
 {
+    Map_3D *map_3d = new Map_3D(200, 50, 800, 800, 1000, 1000);
     this->setFixedSize(1300, 1000);
     scene = new QGraphicsScene();
     view = new QGraphicsView(scene);
@@ -24,15 +26,20 @@ SignalAttenuationWidget::SignalAttenuationWidget(QWidget *parent)
 
     mapImage = QImage(1000, 1000, QImage::Format_RGB32);
     DrawGradient drw;
+
     drw.draw(&mapImage);
+    mapImage.save("map_signal.png");
 
     QLabel* imageLabel = new QLabel();
     imageLabel->setPixmap(QPixmap::fromImage(mapImage));
     scene->addPixmap(QPixmap::fromImage(mapImage));
 
     view->setGeometry(170, 0, 1000, 1000);
-    this->layout()->addWidget(view);
+    //this->layout()->addWidget(view);
     draw_gradient();
+
+    this->layout()->addWidget(map_3d->get_container());
+    map_3d->render("map_signal.png");
 }
 
 

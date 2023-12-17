@@ -1,18 +1,6 @@
 #include "mainwindow.h"
 #include "Material.h"
-#define COUNTM 4
-/*
-Material::Material() {
-    arrayOfMaterial[0] = &calculationOfMultiPanelGlass;
-    arrayOfMaterial[1] = &calculationOfGlass;
-    arrayOfMaterial[2] = &calculationOfConcrete;
-    arrayOfMaterial[3] = &calculationOfWood;
-}*/
-//Material material[COUNTM] = { {glass, 400, 400, 410, 450, QColor(20, 20, 20, 1)},
-//                           {wood, 450, 300, 460, 350,  QColor(255, 228, 205, 1)},
-//            4               {concrete, 50, 100, 100, 105,  QColor(129, 132, 121, 1)},
-//                            {multiPanelGlass, 50, 200, 100, 205,  QColor(255, 132, 121, 1)}
-//                            };
+#define COUNTM 5
 
 double calculationOfMultiPanelGlass(double f) {
     double multiPanelGlass = 2.0 + (0.2 * f);
@@ -35,20 +23,21 @@ double calculationOfWood(double f) {
 }
 
 double computeAttention(int materialType, double frequency) {
-    if (materialType >= 0 &&  materialType < 4) {
+    if (materialType >= 0 &&  materialType < 5) {
         return arrayOfMaterial[materialType](frequency);
     } else {
         return 0.0;
     }
 }
-double (*arrayOfMaterial[4])(double) {
+double (*arrayOfMaterial[5])(double) {
     calculationOfMultiPanelGlass,
     calculationOfGlass,
     calculationOfConcrete,
     calculationOfWood
 };
-Material material[COUNTM] = { {glass, 400, 400, 410, 450, QColor(20, 20, 20, 1)},
-                       {wood, 450, 300, 460, 350,  QColor(255, 228, 205, 1)},
-                       {concrete, 50, 100, 100, 105,  QColor(129, 132, 121, 1)},
-                        {multiPanelGlass, 50, 200, 100, 205,  QColor(255, 132, 121, 1)}
+Material material[COUNTM] = { {concrete, 416, 408, 426, 458, QColor(20, 20, 20, 1)},
+                       {concrete, 467, 304, 477, 354,  QColor(20, 20, 20, 1)},
+                       {concrete, 50, 100, 100, 150,  QColor(20, 20, 20, 1)},
+                        {concrete, 312, 90, 362, 120, QColor(20, 20, 20, 1)},
+                        {concrete, 48, 198, 72, 253,  QColor(20, 20, 20, 1)}
 };

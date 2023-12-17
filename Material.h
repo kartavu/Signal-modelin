@@ -4,8 +4,8 @@
 //#include "BrasenhamLine.h"
 
 
-#define COUNTM 4
-extern double (*arrayOfMaterial[4])(double);
+#define COUNTM 5
+extern double (*arrayOfMaterial[5])(double);
 enum typeOfMaterial {
     multiPanelGlass,
     glass,
